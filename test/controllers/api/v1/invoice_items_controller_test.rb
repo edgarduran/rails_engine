@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::MerchantsControllerTest < ActionController::TestCase
+class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index, format: :json
     assert_response :success
