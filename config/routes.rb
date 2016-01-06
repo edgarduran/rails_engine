@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         member do
           get 'items'
           get 'invoices'
+          get 'favorite_customer'
         end
       end
       resources :transactions, only: [:index, :show], defaults: {format: :json } do
