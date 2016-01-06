@@ -8,7 +8,7 @@ FactoryGirl.define do
     last_name "Duran"
   end
 
-  factory :invoice_items do
+  factory :invoice_item do
     unit_price 45
     quantity 3
     item

@@ -40,4 +40,5 @@ group :development, :test do
   gem 'better_errors'
   gem 'minitest'
   gem 'factory_girl_rails'
+  gem 'simplecov'
 end
