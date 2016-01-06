@@ -24,8 +24,12 @@ namespace :data do
       end
 
     CSV.foreach("data/transactions.csv", :headers => true) do |column|
-      Transaction.create(column.to_h)
+      Transaction.create ([
+                           :credit_card_number => column['credit_card_number'],
+                           :result => column['result'],
+                           :created_at => column['created_at'],
+                           :updated_at => column['updated_at']]
+                          )
       end
-
     end
   end
