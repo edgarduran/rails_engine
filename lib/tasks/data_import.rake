@@ -27,6 +27,7 @@ namespace :data do
       Transaction.create ([
                            :credit_card_number => column['credit_card_number'],
                            :result => column['result'],
+                           :invoice_id => column['invoice_id'],
                            :created_at => column['created_at'],
                            :updated_at => column['updated_at']]
                           )

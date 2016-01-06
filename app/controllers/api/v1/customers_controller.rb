@@ -37,5 +37,9 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.find_by(id: params[:id]).transactions
   end
 
+  def favorite_merchant
+    respond_with Customer.find_by(id: params[:id]).favorite_merchant
+  end
+
 
 end
