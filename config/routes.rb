@@ -12,6 +12,7 @@ Rails.application.routes.draw do
           get 'items'
           get 'invoices'
           get 'favorite_customer'
+          get 'customers_with_pending_invoices'
         end
       end
       resources :transactions, only: [:index, :show], defaults: {format: :json } do

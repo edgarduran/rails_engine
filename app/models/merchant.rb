@@ -19,4 +19,10 @@ class Merchant < ActiveRecord::Base
     name = Customer.find_by(id: id)
   end
 
+  def customers_with_pending_invoices(params)
+    invoices = Merchant.find_by(id: params[:id]).transactions.where(result: "failed").pluck(:invoice_id)
+    customers = Invoice.find(invoices).map { |invoice| invoice.customer }
+  end
+
+
 end
