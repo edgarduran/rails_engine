@@ -30,9 +30,18 @@ class Api::V1::MerchantsController < ApplicationController
     end
   end
 
+  def items
+    respond_with Merchant.find_by(id: params[:id]).items
+  end
+
+  def invoices
+    respond_with Merchant.find_by(id: params[:id]).invoices
+  end
+
+
   # private
   #
   # def customer_params
   #   params.permit(:id, :name)
-  # end  
+  # end
 end

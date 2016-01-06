@@ -22,4 +22,12 @@ class Api::V1::InvoiceItemsController < ApplicationController
     respond_with InvoiceItem.where("#{params.first.first}": params.first.last)
   end
 
+  def item
+    respond_with InvoiceItem.find_by(id: params[:id]).item
+  end
+
+  def invoice
+    respond_with InvoiceItem.find_by(id: params[:id]).invoice
+  end
+
 end
