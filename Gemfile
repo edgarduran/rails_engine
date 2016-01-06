@@ -39,4 +39,5 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'minitest'
+  gem 'factory_girl_rails'
 end
