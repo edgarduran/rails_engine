@@ -24,5 +24,15 @@ class Merchant < ActiveRecord::Base
     customers = Invoice.find(invoices).map { |invoice| invoice.customer }
   end
 
+  def revenue(params)
+    invoices = Merchant.find(params[:id]).invoices.pluck(:id)
+    paid_invoices = Transaction.where(invoice_id: invoices).where(result: "success").pluck(:invoice_id)
+    add_invoices(paid_invoices)
+  end
+
+  def add_invoices(paid)
+    InvoiceItem.where(invoice_id: paid).sum("unit_price * quantity")
+  end
+
 
 end
