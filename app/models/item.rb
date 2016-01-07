@@ -15,7 +15,4 @@ class Item < ActiveRecord::Base
     self.unit_price = unit_price/100.00
   end
 
-  def self.most_revenue(quantity)
-
-  end
 end
