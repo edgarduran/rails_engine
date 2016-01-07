@@ -41,10 +41,6 @@ class Merchant < ActiveRecord::Base
     InvoiceItem.where(invoice_id: paid).sum("unit_price * quantity")
   end
 
-  def self.most_items(params)
-
-  end
-
   def self.merchant_by_date(date)
     joins(invoices: [:transactions, :invoice_items]).where("transactions.result = ?", "success").where("invoices.created_at = ?", date).sum("invoice_items.quantity * invoice_items.unit_price")
   end
