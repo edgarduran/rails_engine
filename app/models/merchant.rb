@@ -30,8 +30,19 @@ class Merchant < ActiveRecord::Base
     add_invoices(paid_invoices)
   end
 
+  def revenue_on_date(params)
+    invoices = Merchant.find(params[:id]).invoices.where(created_at: params["date"])
+    invoices_ids = Merchant.find(params[:id]).invoices.where(created_at: params["date"]).pluck(:id)
+    paid_invoices = Transaction.where(invoice_id: invoices_ids).where(result: "success").pluck(:invoice_id)
+    add_invoices(paid_invoices)
+  end
+
   def add_invoices(paid)
     InvoiceItem.where(invoice_id: paid).sum("unit_price * quantity")
+  end
+
+  def self.most_items(params)
+    "Hola"
   end
 
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
           get 'find'
           get 'find_all'
           get 'random'
+          get 'most_items'
         end
         member do
           get 'items'

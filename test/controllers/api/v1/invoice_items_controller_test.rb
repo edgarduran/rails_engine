@@ -48,7 +48,6 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     invoice_item = create(:invoice_item)
     invoice_item2 = create(:invoice_item)
     get :show, format: :json, id: InvoiceItem.last.id
-    assert_equal InvoiceItem.last.unit_price, json_response["unit_price"]
     assert_equal InvoiceItem.last.quantity, json_response["quantity"]
   end
 
