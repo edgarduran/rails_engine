@@ -58,6 +58,10 @@ class Api::V1::MerchantsController < ApplicationController
     respond_with Merchant.all.most_items(params)
   end
 
+  def merchant_by_date
+    respond_with ({ "total_revenue" => Merchant.all.merchant_by_date(params[:date])})
+  end
+
   # private
   #
   # def customer_params

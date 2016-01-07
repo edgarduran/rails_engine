@@ -42,7 +42,11 @@ class Merchant < ActiveRecord::Base
   end
 
   def self.most_items(params)
-    "Hola"
+
+  end
+
+  def self.merchant_by_date(date)
+    joins(invoices: [:transactions, :invoice_items]).where("transactions.result = ?", "success").where("invoices.created_at = ?", date).sum("invoice_items.quantity * invoice_items.unit_price")
   end
 
 

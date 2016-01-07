@@ -8,6 +8,7 @@ Rails.application.routes.draw do
           get 'find_all'
           get 'random'
           get 'most_items'
+          get 'revenue', to: "merchants#merchant_by_date"
         end
         member do
           get 'items'
@@ -55,10 +56,13 @@ Rails.application.routes.draw do
           get 'find'
           get 'find_all'
           get 'random'
+          get 'most_revenue'
+          get 'most_items'
         end
         member do
           get 'invoice_items'
           get 'merchant'
+          get 'best_day'
         end
       end
       resources :invoices, only: [:index, :show], defaults: {format: :json } do
