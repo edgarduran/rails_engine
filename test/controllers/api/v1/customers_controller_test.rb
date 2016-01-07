@@ -50,6 +50,13 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     assert_equal Customer.last.last_name, json_response["last_name"]
   end
 
+  test "random responds to json" do
+    customer = create(:customer)
+    customer2 = create(:customer)
+    get :random, format: :json
+    assert_response :success
+  end
+
   test "find responds to json" do
     customer = create(:customer)
     customer2 = create(:customer)
@@ -106,6 +113,14 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     transaction = create(:transaction, invoice: invoice)
     get :transactions, format: :json, id: customer.id
     assert_equal customer.transactions.count, json_response.count
+  end
+
+  test "favorite merchant responds to json" do
+    customer = create(:customer)
+    invoice = create(:invoice, customer: customer)
+    transaction = create(:transaction, invoice: invoice)
+    get :favorite_merchant, format: :json, id: Customer.first.id
+    assert_response :success
   end
 
 end

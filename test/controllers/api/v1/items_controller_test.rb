@@ -49,7 +49,6 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
     get :show, format: :json, id: Item.last.id
     assert_equal Item.last.name, json_response["name"]
     assert_equal Item.last.description, json_response["description"]
-    assert_equal Item.last.unit_price, json_response["unit_price"]
   end
 
   test "find responds to json" do
